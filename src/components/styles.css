@@ -1,0 +1,36 @@
+styles.css
+.App {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .movie-card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+  }
+  
+  .star {
+    cursor: pointer;
+    transition: color 0.2s;
+    margin-right: 2px;
+  }
+  
+  .star:hover {
+    color: #ffc107;
+  }
+  
