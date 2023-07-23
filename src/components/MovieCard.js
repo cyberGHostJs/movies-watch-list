@@ -1,45 +1,30 @@
-import React from 'react';
-import { FaStar } from 'react-icons/fa';
+import React from "react";
 
-const MovieCard = ({ movie, onWatchlistChange }) => {
-  const { title, release_year, rating, watched } = movie;
+const MovieCard = ({ movie, onAddToWatchlist }) => {
+  const { title, release_date, vote_average , poster_path, id, overview } = movie;
 
-  const handleRatingChange = (newRating) => {
-    const updatedMovie = { ...movie, rating: newRating };
-    onWatchlistChange(updatedMovie);
-  };
-
-  const handleWatchedToggle = () => {
-    const updatedMovie = { ...movie, watched: !watched };
-    onWatchlistChange(updatedMovie);
+  const handleMovieClick = () => {
+    // Add the movie data to the watchlist in local storage
+    const movieData = {
+      title,
+      release_date,
+      vote_average,
+      poster_path,
+      id,
+    };
+    console.log("added")
+    onAddToWatchlist(movieData);
   };
 
   return (
-    <div className="movie-card">
+    <div className="movie-card" onClick={handleMovieClick}>
+      <img
+        src={`https://image.tmdb.org/t/p/w200${poster_path}`}
+        alt={`${title} Poster`}
+      />
       <h3>{title}</h3>
-      <p>Release Year: {release_year}</p>
-      <div className="rating">
-        <span>Rating:</span>
-        {[...Array(5)].map((_, index) => (
-          <label key={index}>
-            <input
-              type="radio"
-              value={index + 1}
-              checked={rating === index + 1}
-              onChange={() => handleRatingChange(index + 1)}
-            />
-            <FaStar className="star" color={index < rating ? '#ffc107' : '#e4e5e9'} />
-          </label>
-        ))}
-      </div>
-      <label>
-        Watched:
-        <input
-          type="checkbox"
-          checked={watched}
-          onChange={handleWatchedToggle}
-        />
-      </label>
+      <p>Overview: {overview}</p>
+      <p>Release Date: {release_date}</p>
     </div>
   );
 };

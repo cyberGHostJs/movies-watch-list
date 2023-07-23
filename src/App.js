@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import SearchBar from './components/SearchBar';
 import Watchlist from './components/Watchlist';
+import MovieSearch from './components/MovieSearch';
 import axios from 'axios';
-// import logo from './logo.svg';
-// import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import './App.css';
 
-const API_KEY = 'YOUR_API_KEY';
+const API_KEY = 'a75e655a62afe0300c1b7ad027ce2308';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-  const [watchlist, setWatchlist] = useState([]);
 
   const fetchMovies = async (searchTerm) => {
     try {
@@ -21,6 +20,7 @@ const App = () => {
         },
       });
       setSearchResults(response.data.results);
+      console.log(response.data.results);
     } catch (error) {
       console.error('Error fetching movies:', error);
     }
@@ -34,23 +34,13 @@ const App = () => {
     fetchMovies(searchTerm);
   };
 
-  const handleWatchlistChange = (updatedMovie) => {
-    const updatedWatchlist = watchlist.map((movie) => {
-      if (movie.id === updatedMovie.id) {
-        return updatedMovie;
-      }
-      return movie;
-    });
-    setWatchlist(updatedWatchlist);
-  };
-
   return (
-    <div className="App">
-      <SearchBar onSearch={handleSearch} />
-      <Watchlist watchlist={watchlist} onWatchlistChange={handleWatchlistChange} />
-    </div>
+    <Routes>
+      <Route path="/" element={<MovieSearch watchlist={searchResults} onSearch={handleSearch}/>} />
+      {/* <Route path="/watchlist" element={<Watchlist watchlist={watchlist} onWatchlistChange={handleWatchlistChange} />} /> */}
+      <Route path="/watchlist" element={<Watchlist />} />
+      </Routes> 
   );
 };
 
 export default App;
-

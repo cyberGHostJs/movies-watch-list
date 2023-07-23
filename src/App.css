@@ -1,38 +1,182 @@
+styles.css
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
   }
-}
+  
+  input[type="text"] {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: 16px !important;
+  }
+  
+  .movie-card {
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    padding: 10px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  /* .rating {
+    display: flex !important;
+    align-items: center !important;
+    margin-bottom: 5px !important;
+  }
+  
+  .star {
+    cursor: pointer !important;
+    transition: color 0.2s !important;
+    margin-right: 2px !important;
+  }
+  
+  .star:hover {
+    color: #ffc107 !important;
+  } */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* ---MY NAV BAR---- */
+.nav-brand-landing {
+  padding: 0 5%;
+}
+.nav-landing {
+  width: 95%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-end;
+}
+.find-hospital {
+  position: relative;
+  white-space: nowrap;
+  padding: 0 7% !important;
+  width: auto;
+}
+.find-hospital-img {
+  position: absolute;
+  top: 0%;
+  left: 0;
+}
+.saved-hospital {
+  position: relative;
+  white-space: nowrap;
+  padding: 0 7% !important;
+  width: auto;
+}
+.saved-hospital-img {
+  position: absolute;
+  top: 0%;
+  left: 0;
+}
+.my-profile {
+  position: relative;
+  white-space: nowrap;
+  padding: 0 7% !important;
+  width: auto;
+}
+.my-profile-img {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  background: #d9d9d9;
+  padding: 4% !important;
+}
+.nav-color {
+  color: black;
+  opacity: 0.75;
+  text-decoration: none;
+}
+.nav-color-active{
+  color: green !important;
+  text-decoration: underline;
+}
+.nav-color-active:hover{
+  color: black;
+  text-decoration: none;
+}
+.nav-color:hover{
+  color: green;
+  opacity: 1;
+  text-decoration: none;
+}
+.nav-menu{
+  z-index: 20;
+}
+.grey-border-bottom {
+  border-bottom: 1px solid #d4d4d4 !important;
 }
 
-.App-link {
-  color: #61dafb;
+.fixed-top {
+  background-color: white;
+  transition: all 0.5s;
+  position: fixed;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+@media screen and (max-width: 991px) {
+  .nav-landing2 {
+    border: 1px solid black;
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    transition-duration: 300ms;
+    position: fixed;
+    color: white !important;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0 0 0 / 0.9);
+    padding-left: 1rem /* 16px */;
+    padding-right: 1rem /* 16px */;
+    padding-top: 1.75rem /* 28px */;
+    padding-bottom: 1.75rem /* 28px */;
+    flex-direction: column;
+    z-index: 10;
+  }
+  .nav-landing3 {
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    left: -100%;
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    transition-duration: 500ms;
+    z-index: 10;
+  }
+  .nav-color {
+    color: white;
+    opacity: 0.75;
+    text-decoration: none;
+  }
+  .nav-color-active{
+    color: white;
+    text-decoration: none;
+  }
+  .nav-color-active:hover{
+    color: white;
+    text-decoration: none;
+  }
+  .nav-color:hover{
+    color: white;
+    opacity: 1;
+    text-decoration: none;
+  }
+  .nav-landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .saved-hospital{
+    margin: 9% auto !important;
+  }
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width: 665px) {
+  .nav-brand-landing {
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+  .nav-brand-img {
+    width: 60%;
   }
 }
+
+  
+  
