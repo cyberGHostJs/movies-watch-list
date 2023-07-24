@@ -9,10 +9,10 @@ const Navigation = () => {
   const location = useLocation();
   const [isNavFixed, setIsNavFixed] = useState(false);
   const [nav, setNav] = useState(false);
-  const [menuButtonColor, setMenuButtonColor] = useState("none");
+  const [menuButtonColor, setMenuButtonColor] = useState("#f33f3f");
 
   const HandleNav = () => {
-    setMenuButtonColor(nav ? "none" : "white"); // Toggle between black and white
+    setMenuButtonColor(nav ? "#f33f3f" : "white"); // Toggle between black and white
     setNav(!nav);
     if (!nav) {
       document.body.style.overflow = "hidden";
