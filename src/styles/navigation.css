@@ -1,0 +1,143 @@
+.fixed-top {
+  background-color: #1f1f1f;
+  transition: all 0.5s;
+  position: fixed;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.grey-border-bottom {
+  background-color: #1f1f1f;
+  transition: all 0.5s;
+  position: fixed;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.nav-brand-landing {
+  color: #f33f3f;
+  font-weight: 800;
+  font-size: 150%;
+  padding: 0 5%;
+}
+.nav-menu {
+  z-index: 20;
+}
+.nav-landing {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-color-active {
+  color: white !important;
+  text-decoration: none;
+}
+.nav-color-active:hover {
+  text-decoration: none;
+  cursor: pointer !important;
+}
+.find-hospital {
+  position: relative;
+  white-space: nowrap;
+  padding: 0 7% !important;
+  width: auto;
+}
+.nav-color {
+  color: white;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+.nav-color:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+.home_svg {
+  position: absolute;
+  left: 7%;
+  background: #1f1f1f;
+}
+.My_WatchList {
+  position: relative;
+  white-space: nowrap;
+  padding: 0 7% !important;
+  width: auto;
+}
+.WatchList_li {
+  position: absolute;
+  top: 0%;
+  left: 20%;
+}
+
+@media screen and (max-width: 991px) {
+  .grey-border-bottom {
+    position: relative;
+  }
+  .nav-landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-landing2 {
+    border: 1px solid black;
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    transition-duration: 300ms;
+    position: fixed;
+    color: white !important;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(0 0 0 / 0.9);
+    padding-left: 1rem /* 16px */;
+    padding-right: 1rem /* 16px */;
+    padding-top: 1.75rem /* 28px */;
+    padding-bottom: 1.75rem /* 28px */;
+    flex-direction: column;
+    z-index: 10;
+  }
+  .nav-landing3 {
+    position: absolute;
+    top: 0px;
+    height: 100vh;
+    left: -100%;
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    transition-duration: 500ms;
+    z-index: 10;
+  }
+  .nav-color-active {
+    color: white;
+    text-decoration: none;
+  }
+  .nav-color-active:hover {
+    color: white;
+    text-decoration: none;
+  }
+  .nav-color {
+    color: white;
+    opacity: 0.75;
+    text-decoration: none;
+  }
+  .nav-color:hover {
+    color: white;
+    opacity: 1;
+    text-decoration: none;
+  }
+  .My_WatchList {
+    margin: 9% auto !important;
+  }
+}
+@media screen and (max-width: 665px) {
+  .nav-brand-landing {
+    width: 70%;
+  }
+  .WatchList_li {
+    left: 8%;
+  }
+  .home_svg {
+    left: 0%;
+  }
+}

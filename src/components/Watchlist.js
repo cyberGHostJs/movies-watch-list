@@ -73,7 +73,7 @@ const Watchlist = () => {
   return (
     <div>
       <Navigation />
-      <h2>My Watchlist</h2>
+      <h2 style={{ marginTop: "10%" }}>My Watchlist</h2>
       <button onClick={handleClearLocalStorage}>Clear Local Storage</button>
       <button onClick={handleViewLocalStorage}>View Local Storage Data</button>
       <div>
@@ -109,7 +109,7 @@ const Watchlist = () => {
                     marginRight: "10px",
                     cursor: "pointer",
                     fontWeight: "700",
-                    fontSize: "larger"
+                    fontSize: "larger",
                   }}
                 >
                   {movie.title}

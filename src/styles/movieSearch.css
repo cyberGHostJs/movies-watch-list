@@ -1,0 +1,98 @@
+.movieSearch_container {
+  background: #1f1f1ff4;
+  min-height: 100vh;
+}
+.search_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #1f1f1f;
+}
+.search_input {
+  position: absolute;
+  max-width: 85%;
+  top: 20%;
+  left: 4%;
+  background: #1f1f1f;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  outline: none;
+  color: grey;
+}
+.search_input:focus {
+  border: 2px solid #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.my_list_header {
+  position: absolute;
+  top: 43%;
+  left: 10%;
+  color: grey;
+}
+
+.my_list {
+  background-color: #1f1f1f;
+  position: absolute;
+  width: 85% !important;
+  height: 40%;
+  padding: 5%;
+  top: 50%;
+  left: 4%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: grey;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.myWatchlist {
+  margin-right: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 80%;
+}
+.searchResult_container {
+  padding: 10% 6%;
+  margin-left: 24%;
+  width: 76%;
+}
+
+@media screen and (max-width: 991px) {
+
+  .my_list_header {
+    display: none;
+  }
+  .my_list {
+    display: none;
+  }
+  .searchResult_container {
+    padding: 10% 6%;
+    margin-left: 0%;
+    width: 100%;
+  }
+  .search_container {
+    position: relative !important;
+    height: fit-content;
+    width: 86% !important;
+    margin: 5% auto;
+  }
+  .search_input {
+    min-width: 100%;
+    left: 0;
+    background: #1f1f1f;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    outline: none;
+    color: grey;
+  }
+}
+@media screen and (max-width: 600px) {
+  .searchResult_container {
+    padding: 15% 6%;
+  }
+}
+@media screen and (max-width: 425px) {
+  .searchResult_container {
+    padding: 19% 6%;
+  }
+}

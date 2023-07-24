@@ -1,0 +1,31 @@
+.card {
+  height: 100%;
+  border: none;
+}
+.ribbon_icon {
+  position: absolute;
+  cursor: pointer;
+}
+.added_to_watchlist {
+  position: absolute;
+  background: grey;
+  width: 100%;
+  cursor: progress;
+}
+.card_title{
+    font-size: 100%;
+    cursor: pointer;
+    color: white;
+    font-weight: 800;
+}
+.card_text{
+    color: grey;
+    font-size: 80%;
+}
+
+@media screen and (max-width: 665px) {
+.card {
+  height: 100%;
+  border: none;
+}
+}

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Nav, Navbar, Row } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
+import home_svg from "../images/Home.svg";
+// import search_svg from "../images/search.svg"
 
 const Navigation = () => {
   const [activeMenuItem, setActiveMenuItem] = useState("search");
@@ -84,6 +86,7 @@ const Navigation = () => {
                   : "find-hospital nav-color"
               }
             >
+              <img src={home_svg} alt="home" className="home_svg" />
               Search Movie
             </Link>
             <Link
@@ -96,10 +99,12 @@ const Navigation = () => {
               to="/watchlist"
               className={
                 activeMenuItem === "watchlist"
-                  ? "nav-color-active saved-hospital"
-                  : "saved-hospital nav-color"
+                  ? "nav-color-active My_WatchList"
+                  : "My_WatchList nav-color"
               }
+              style={{ backgroundColor: "#F33F3F", borderRadius: "6px" }}
             >
+              <span className="WatchList_li">+</span>
               WatchList
             </Link>
           </Nav>

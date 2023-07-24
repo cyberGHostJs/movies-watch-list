@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import Watchlist from './components/Watchlist';
-import MovieSearch from './components/MovieSearch';
-import axios from 'axios';
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import React, { useState } from "react";
+import Watchlist from "./components/Watchlist";
+import MovieSearch from "./components/MovieSearch";
+import axios from "axios";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import "./styles/movieCard.css";
+import "./styles/movieSearch.css";
+import "./styles/navigation.css";
 
-const API_KEY = 'a75e655a62afe0300c1b7ad027ce2308';
-const BASE_URL = 'https://api.themoviedb.org/3';
+const API_KEY = "a75e655a62afe0300c1b7ad027ce2308";
+const BASE_URL = "https://api.themoviedb.org/3";
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -22,12 +25,12 @@ const App = () => {
       setSearchResults(response.data.results);
       console.log(response.data.results);
     } catch (error) {
-      console.error('Error fetching movies:', error);
+      console.error("Error fetching movies:", error);
     }
   };
 
   const handleSearch = (searchTerm) => {
-    if (searchTerm.trim() === '') {
+    if (searchTerm.trim() === "") {
       setSearchResults([]);
       return;
     }
@@ -36,10 +39,15 @@ const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<MovieSearch watchlist={searchResults} onSearch={handleSearch}/>} />
+      <Route
+        path="/"
+        element={
+          <MovieSearch watchlist={searchResults} onSearch={handleSearch} />
+        }
+      />
       {/* <Route path="/watchlist" element={<Watchlist watchlist={watchlist} onWatchlistChange={handleWatchlistChange} />} /> */}
       <Route path="/watchlist" element={<Watchlist />} />
-      </Routes> 
+    </Routes>
   );
 };
 
