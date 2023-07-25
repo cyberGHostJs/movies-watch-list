@@ -4,23 +4,77 @@ import Navigation from "./Navigation";
 import { Col, Container, Row } from "react-bootstrap";
 import ribbon_svg from "../images/ribbon.svg";
 
-
-const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
+const MovieSearch = ({ watchlist, onWatchlistChange, onSearch, fetchErr }) => {
   //onSearch is the input data passed as prop to the app.js so the handleSearch can use the input data to find movie from the api
   const [searchTerm, setSearchTerm] = useState("");
   const [myWatchlist, setMyWatchlist] = useState([]);
-  const [header, setHeader] = useState("")
+  const [header, setHeader] = useState("");
 
   const handleInputChange = (e) => {
+    //update search value as user types
     setSearchTerm(e.target.value);
     onSearch(e.target.value);
-    setHeader("Search Results")
+    setHeader("Search Results");
+  };
+
+  // filter movies made in 2023 and siaplay them on page load as latest movies
+  const filteredMovies = watchlist.filter((movie) =>
+    movie.release_date.includes("2023")
+  );
+  //unfiltered movies displayed when movie name is searched.
+  const unfilteredMovies = watchlist;
+
+  //this displays the movies based on condition (i.e if there's no content in search input, it displays latest movies)
+  const DisplayMovies = () => {
+    if (fetchErr) {
+      return (
+        <p style={{ color: "grey" }} className="emptyList_alert">
+          An Error Occured Reload Page<svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="#f33f3f"
+            className="bi bi-exclamation-lg exclamation"
+            viewBox="0 0 16 16"
+          >
+            <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
+          </svg>
+        </p>
+      );
+    }
+    return (
+      <>
+        {searchTerm ? (
+          <>
+            {unfilteredMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onWatchlistChange={onWatchlistChange}
+                onAddToWatchlist={addToWatchlist} // Pass the onAddToWatchlist function to MovieCard
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            {filteredMovies.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                onWatchlistChange={onWatchlistChange}
+                onAddToWatchlist={addToWatchlist} // Pass the onAddToWatchlist function to MovieCard
+              />
+            ))}
+          </>
+        )}
+      </>
+    );
   };
 
   useEffect(() => {
     if (!searchTerm) {
-      onSearch("E"); //replace this with the top ranking
-      setHeader("Popular movies right now")
+      onSearch("a"); //replace this with the top ranking
+      setHeader("Latest movies right now");
     }
   }, [searchTerm]);
 
@@ -92,26 +146,45 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
         </div>
       </Col>
       <Row className="searchResult_container">
-        <Col xs="12" style={{ border: "2px solid #f33f3f", padding: "3%", borderRadius: "10px", marginBottom: "5% ", background: "rgba(255, 255, 255, 0.097)" }}>
+        <Col
+          xs="12"
+          style={{
+            border: "2px solid #f33f3f",
+            padding: "3%",
+            borderRadius: "10px",
+            marginBottom: "5% ",
+            background: "rgba(255, 255, 255, 0.097)",
+          }}
+        >
           <h3 style={{ color: "white" }}>
-            Welcome to <span style={{ color: "#f33f3f"}}>MovFlix</span>
+            Welcome to <span style={{ color: "#f33f3f" }}>MovFlix</span>
           </h3>
           <p style={{ color: "white" }}>
-            Browse movies and add them to your watchlist.
-            Just click the <img src={ribbon_svg} alt="ribbon"/> or movie title to add a movie. Click the checkbox on poster in the watchlist page to
-            mark the movie as watched.
+            Browse movies and add them to your watchlist. Just click the{" "}
+            <img src={ribbon_svg} alt="ribbon" /> or movie title to add a movie.
+            Click the checkbox on poster in the watchlist page to mark the movie
+            as watched.
           </p>
         </Col>
         <h2 className="text-white">{header}</h2>
 
-        {watchlist.map((movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onWatchlistChange={onWatchlistChange}
-            onAddToWatchlist={addToWatchlist} // Pass the onAddToWatchlist function to MovieCard
-          />
-        ))}
+        {watchlist.length === 0 && searchTerm && !fetchErr ? (
+          <p style={{ color: "grey" }} className="emptyList_alert">
+            Movie not Found
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="#f33f3f"
+              className="bi bi-exclamation-lg exclamation"
+              viewBox="0 0 16 16"
+            >
+              <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
+            </svg>
+          </p>
+        ) : (
+          DisplayMovies()
+        )}
       </Row>
     </Container>
   );

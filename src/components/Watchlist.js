@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "./Navigation";
-import MovieRating from "./MovieRating";
 import MyCard from "./Card";
 import { Col, Container, Row } from "react-bootstrap";
 
