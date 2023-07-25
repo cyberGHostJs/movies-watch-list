@@ -2,15 +2,27 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import Navigation from "./Navigation";
 import { Col, Container, Row } from "react-bootstrap";
+import ribbon_svg from "../images/ribbon.svg";
+
 
 const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
+  //onSearch is the input data passed as prop to the app.js so the handleSearch can use the input data to find movie from the api
   const [searchTerm, setSearchTerm] = useState("");
   const [myWatchlist, setMyWatchlist] = useState([]);
+  const [header, setHeader] = useState("")
 
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
     onSearch(e.target.value);
+    setHeader("Search Results")
   };
+
+  useEffect(() => {
+    if (!searchTerm) {
+      onSearch("E"); //replace this with the top ranking
+      setHeader("Popular movies right now")
+    }
+  }, [searchTerm]);
 
   const addToWatchlist = (movieData) => {
     // Retrieve the existing watchlist from local storage (if any)
@@ -61,32 +73,36 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
           value={searchTerm}
           onChange={handleInputChange}
         />
-        <p
-        className="my_list_header"
-        >
-          My Lists
-        </p>
+        <p className="my_list_header">My Lists</p>
         <div className="my_list">
           <ul>
             {myWatchlist.map((movie) => (
-              <li key={movie.id} style={{ marginBottom: "5%"}}>
-                  <span
+              <li key={movie.id} style={{ marginBottom: "5%" }}>
+                <span
                   className="myWatchlist"
-                    style={{
-                      textDecoration: movie.watched ? "line-through" : "none"
-                    }}
-                  >
-                    {movie.title}
-                  </span>
+                  style={{
+                    textDecoration: movie.watched ? "line-through" : "none",
+                  }}
+                >
+                  {movie.title}
+                </span>
               </li>
             ))}
           </ul>
         </div>
       </Col>
-      <Row
-      className="searchResult_container"
-      >
-        <h2 className="text-white">Search Results</h2>
+      <Row className="searchResult_container">
+        <Col xs="12" style={{ border: "2px solid #f33f3f", padding: "3%", borderRadius: "10px", marginBottom: "5% ", background: "rgba(255, 255, 255, 0.097)" }}>
+          <h3 style={{ color: "white" }}>
+            Welcome to <span style={{ color: "#f33f3f"}}>MovFlix</span>
+          </h3>
+          <p style={{ color: "white" }}>
+            Browse movies and add them to your watchlist.
+            Just click the <img src={ribbon_svg} alt="ribbon"/> or movie title to add a movie. Click the checkbox on poster in the watchlist page to
+            mark the movie as watched.
+          </p>
+        </Col>
+        <h2 className="text-white">{header}</h2>
 
         {watchlist.map((movie) => (
           <MovieCard
