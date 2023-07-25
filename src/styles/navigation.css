@@ -23,6 +23,9 @@
   font-size: 150%;
   padding: 0 5%;
 }
+.nav-brand-landing:hover {
+  color: #f33f3f;
+}
 .nav-menu {
   z-index: 20;
 }

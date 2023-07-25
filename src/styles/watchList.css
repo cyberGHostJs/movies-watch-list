@@ -1,0 +1,20 @@
+.emptyList_alert{
+    font-size: 150%;
+    color: grey;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5% auto;
+}
+
+@media screen and (max-width: 460px) {
+    .emptyList_alert{
+        font-size: 100%;
+    }
+}
+@media screen and (max-width: 340px) {
+    .emptyList_alert{
+        font-size: 90%;
+    }
+}

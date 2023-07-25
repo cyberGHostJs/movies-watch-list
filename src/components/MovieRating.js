@@ -31,7 +31,7 @@ const MovieRating = ({ voteAverage, movieId, onChangeRating }) => {
           key={i}
           className="star"
           onClick={() => handleRatingChange(i)}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer', color: "yellow" }}
         >
           &#9733;
         </span>
@@ -42,9 +42,9 @@ const MovieRating = ({ voteAverage, movieId, onChangeRating }) => {
           key={i}
           className="star"
           onClick={() => handleRatingChange(i)}
-          style={{ cursor: 'pointer' }}
+          style={{ cursor: 'pointer'}}
         >
-          &#9734;
+          &#9733;
         </span>
       ); // Empty star
     }
@@ -52,8 +52,7 @@ const MovieRating = ({ voteAverage, movieId, onChangeRating }) => {
 
   return (
     <div>
-      <div className="rating">{stars}</div>
-      <p>Rating: {rating.toFixed(1)} / 5</p>
+      <div className="rating">Rating: {stars}</div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import "./App.css";
 import "./styles/movieCard.css";
 import "./styles/movieSearch.css";
 import "./styles/navigation.css";
+import "./styles/watchList.css";
 
 const API_KEY = "a75e655a62afe0300c1b7ad027ce2308";
 const BASE_URL = "https://api.themoviedb.org/3";

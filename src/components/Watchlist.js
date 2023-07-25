@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "./Navigation";
 import MovieRating from "./MovieRating";
+import MyCard from "./Card";
+import { Col, Container, Row } from "react-bootstrap";
 
 const Watchlist = () => {
   const [watchlist, setWatchlist] = useState([]);
@@ -66,69 +68,94 @@ const Watchlist = () => {
 
   const handleClearLocalStorage = () => {
     localStorage.clear();
-    // Optionally, you can also trigger a reload of the page to reset the application state
+    //  also trigger a reload of the page to reset the application state
     window.location.reload();
   };
 
   return (
-    <div>
+    <Container
+      fluid
+      className="default_bg"
+      style={{ minHeight: "100vh" }}
+    >
       <Navigation />
-      <h2 style={{ marginTop: "10%" }}>My Watchlist</h2>
-      <button onClick={handleClearLocalStorage}>Clear Local Storage</button>
-      <button onClick={handleViewLocalStorage}>View Local Storage Data</button>
-      <div>
-        <label>
-          Filter:
-          <select value={filter} onChange={handleFilterChange}>
-            <option value="All">All</option>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          padding: "10% 5%",
+        }}
+      >
+        <h2 style={{ color: "white", fontWeight: "800" }}>My Watchlist</h2>
+        {/* <button onClick={handleClearLocalStorage}>Clear Local Storage</button> */}
+        {/* <button onClick={handleViewLocalStorage}>View Local Storage Data</button> */}
+        <label style={{ color: "white" }}>
+          <select
+            value={filter}
+            onChange={handleFilterChange}
+            style={{
+              padding: "5%",
+              borderRadius: "10px",
+              outline: "none",
+              background: "#1f1f1f",
+              border: "2px solid grey",
+              color: "grey",
+            }}
+          >
+            <option value="All">Filter</option>
             <option value="Watched">Watched</option>
             <option value="Unwatched">Unwatched</option>
           </select>
         </label>
       </div>
+
       {filteredWatchlist.length === 0 ? (
-        <p>Your {filter.toLowerCase()} movie list is empty.</p>
+        <p
+        className="emptyList_alert"
+       
+        >
+          Your {filter.toLowerCase()} movie list is empty
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="30"
+            height="30"
+            fill="#f33f3f"
+            className="bi bi-exclamation-lg exclamation"
+            viewBox="0 0 16 16"
+          >
+            <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
+          </svg>
+        </p>
       ) : (
-        <ul>
+        <Row
+          style={{
+            padding: "0% 5%",
+            listStyle: "none",
+            justifyContent: "space-between !important",
+          }}
+        >
           {filteredWatchlist.map((movie) => (
-            <li key={movie.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                alt={`${movie.title} Poster`}
+            <Col lg="3" sm="6" key={movie.id} className="mb-4">
+              <MyCard
+                imageUrl={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                caption={movie.title}
+                date={movie.release_date}
+                textDecoration={movie.watched ? "line-through" : "none"}
+                vote_average={0}
+                id={movie.id}
+                handleRatingChange={() => handleRatingChange()}
+                radioName={`watched_${movie.id}`}
+                radioChecked={movie.watched || false}
+                handleWatchedToggle_movieId={() =>
+                  handleWatchedToggle(movie.id)
+                }
+                handleRemoveMovie_movieId={() => handleRemoveMovie(movie.id)}
               />
-              <label>
-                <input
-                  type="radio"
-                  name={`watched_${movie.id}`}
-                  checked={movie.watched || false}
-                  onChange={() => handleWatchedToggle(movie.id)}
-                />
-                <span
-                  style={{
-                    textDecoration: movie.watched ? "line-through" : "none",
-                    marginRight: "10px",
-                    cursor: "pointer",
-                    fontWeight: "700",
-                    fontSize: "larger",
-                  }}
-                >
-                  {movie.title}
-                </span>
-              </label>
-              <p>Release date: {movie.release_date}</p>
-              <MovieRating
-                voteAverage={movie.vote_average}
-                movieId={movie.id}
-                onChangeRating={handleRatingChange}
-              />
-              <button onClick={() => handleRemoveMovie(movie.id)}>
-                Remove
-              </button>
-            </li>
+            </Col>
           ))}
-        </ul>
+        </Row>
       )}
-    </div>
+    </Container>
   );
 };
 

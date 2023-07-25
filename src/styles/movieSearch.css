@@ -14,7 +14,7 @@
   max-width: 85%;
   top: 20%;
   left: 4%;
-  background: #1f1f1f;
+  background: #252525;
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   outline: none;
@@ -36,12 +36,14 @@
   position: absolute;
   width: 85% !important;
   height: 40%;
-  padding: 5%;
+  padding: 6% 0%;
   top: 50%;
   left: 4%;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   color: grey;
+  background-color: #252525;
   overflow: hidden;
   overflow-y: auto;
 }

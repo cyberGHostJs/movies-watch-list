@@ -69,8 +69,7 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
         <div className="my_list">
           <ul>
             {myWatchlist.map((movie) => (
-              <li key={movie.id}>
-                <label>
+              <li key={movie.id} style={{ marginBottom: "5%"}}>
                   <span
                   className="myWatchlist"
                     style={{
@@ -79,11 +78,6 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
                   >
                     {movie.title}
                   </span>
-                </label>
-                <br />
-                <span style={{ fontSize: "70%" }}>
-                  Release date: {movie.release_date}
-                </span>
               </li>
             ))}
           </ul>
@@ -92,7 +86,7 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch }) => {
       <Row
       className="searchResult_container"
       >
-        <h2 className="text-white">Search Results:</h2>
+        <h2 className="text-white">Search Results</h2>
 
         {watchlist.map((movie) => (
           <MovieCard

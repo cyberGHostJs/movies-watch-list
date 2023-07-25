@@ -56,7 +56,7 @@ const Navigation = () => {
         }}
       >
         <Navbar.Brand href="/" className="nav-brand-landing">
-          Movie Watchlist
+          MovFlix Watchlist
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
