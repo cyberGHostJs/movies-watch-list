@@ -56,50 +56,16 @@ const Watchlist = () => {
       : filter === "Unwatched"
       ? watchlist.filter((movie) => !movie.watched)
       : watchlist;
-
-  const handleViewLocalStorage = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      const value = localStorage.getItem(key);
-      console.log(`${key}: ${value}`);
-    }
-  };
-
-  const handleClearLocalStorage = () => {
-    localStorage.clear();
-    //  also trigger a reload of the page to reset the application state
-    window.location.reload();
-  };
-
   return (
-    <Container
-      fluid
-      className="default_bg"
-      style={{ minHeight: "100vh" }}
-    >
+    <Container fluid className="default_bg" style={{ minHeight: "100vh" }}>
       <Navigation />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "10% 5%",
-        }}
-      >
-        <h2 style={{ color: "white", fontWeight: "800" }}>My Watchlist</h2>
-        {/* <button onClick={handleClearLocalStorage}>Clear Local Storage</button> */}
-        {/* <button onClick={handleViewLocalStorage}>View Local Storage Data</button> */}
+      <div className="WatchHeader_cover">
+        <h2 style={{ color: "white", fontWeight: "700" }}>My Watchlist</h2>
         <label style={{ color: "white" }}>
           <select
+            className="filter_select"
             value={filter}
             onChange={handleFilterChange}
-            style={{
-              padding: "5%",
-              borderRadius: "10px",
-              outline: "none",
-              background: "#1f1f1f",
-              border: "2px solid grey",
-              color: "grey",
-            }}
           >
             <option value="All">Filter</option>
             <option value="Watched">Watched</option>
@@ -109,10 +75,7 @@ const Watchlist = () => {
       </div>
 
       {filteredWatchlist.length === 0 ? (
-        <p
-        className="emptyList_alert"
-       
-        >
+        <p className="emptyList_alert">
           Your {filter.toLowerCase()} movie list is empty
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -126,13 +89,7 @@ const Watchlist = () => {
           </svg>
         </p>
       ) : (
-        <Row
-          style={{
-            padding: "0% 5%",
-            listStyle: "none",
-            justifyContent: "space-between !important",
-          }}
-        >
+        <Row className="myCard_row">
           {filteredWatchlist.map((movie) => (
             <Col lg="3" sm="6" key={movie.id} className="mb-4">
               <MyCard

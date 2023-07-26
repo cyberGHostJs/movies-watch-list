@@ -3,6 +3,7 @@ import MovieCard from "./MovieCard";
 import Navigation from "./Navigation";
 import { Col, Container, Row } from "react-bootstrap";
 import ribbon_svg from "../images/ribbon.svg";
+import ErrorPage from "./ErrorPage";
 
 const MovieSearch = ({ watchlist, onWatchlistChange, onSearch, fetchErr }) => {
   //onSearch is the input data passed as prop to the app.js so the handleSearch can use the input data to find movie from the api
@@ -17,30 +18,17 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch, fetchErr }) => {
     setHeader("Search Results");
   };
 
-  // filter movies made in 2023 and siaplay them on page load as latest movies
+  // filter movies made in 2023 and display them on page load as latest movies
   const filteredMovies = watchlist.filter((movie) =>
     movie.release_date.includes("2023")
   );
   //unfiltered movies displayed when movie name is searched.
   const unfilteredMovies = watchlist;
 
-  //this displays the movies based on condition (i.e if there's no content in search input, it displays latest movies)
+  //this displays the movies based on condition (i.e if there's no content in search input, it displays latest movies & handles error)
   const DisplayMovies = () => {
     if (fetchErr) {
-      return (
-        <p style={{ color: "grey" }} className="emptyList_alert">
-          An Error Occured Reload Page<svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="30"
-            height="30"
-            fill="#f33f3f"
-            className="bi bi-exclamation-lg exclamation"
-            viewBox="0 0 16 16"
-          >
-            <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z" />
-          </svg>
-        </p>
-      );
+      return <ErrorPage />;
     }
     return (
       <>
@@ -73,7 +61,7 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch, fetchErr }) => {
 
   useEffect(() => {
     if (!searchTerm) {
-      onSearch("a"); //replace this with the top ranking
+      onSearch("a"); //2023/ latest movies that begin with "a"
       setHeader("Latest movies right now");
     }
   }, [searchTerm]);
