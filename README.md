@@ -1,70 +1,108 @@
-# Getting Started with Create React App
-
+# Movie Search App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+This is a Movie Search web application built with React that allows users to search for movies using The Movie Database (TMDB) API and add them to their watchlist.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Search for movies using keywords.
+- Display search results.
+- Add movies to the watchlist and mark them as watched.
+- Delete movies when they're no longer needed
+- View and manage your watchlist.
+- Handle error gracefully if there's an issue with fetching data.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Prerequisites
 
-### `npm run build`
+- Node.js and npm must be installed on your system. You can download them from the official website: https://nodejs.org/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository to your local machine:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
 
-### `npm run eject`
+git clone https://github.com/cyberGHostJs/movie-search-app.git
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Change into the project directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+cd movie-search-app
 
-## Learn More
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Install the dependencies:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
 
-### Code Splitting
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
 
-### Analyzing the Bundle Size
+4. Start the development server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
 
-### Making a Progressive Web App
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
 
-### Advanced Configuration
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- The application will be running at http://localhost:3000 in your web browser.
 
-### Deployment
+- Use the search bar to search for movies by their titles.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Click on the "Add to Watchlist" button to add a movie to your watchlist.
 
-### `npm run build` fails to minify
+- Navigate to the "Watchlist" page to view and manage your watchlist.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- On the watchlist page, you can mark a movie as watched by clicking on the checkbox next to the movie.
+
+
+## Contributing
+
+Contributions are welcome! If you find any issues with the application or want to add new features, feel free to open an issue or submit a pull request.
+
+1. Fork the repository.
+
+2. Create a new branch:
+
+```bash
+
+git checkout -b feature/your-feature-name
+
+```
+3. Make your changes and commit them:
+
+```bash
+
+git commit -m "Add your commit message here"
+
+```
+
+4. Push your changes to your forked repository:
+
+```bash
+
+git push origin feature/your-feature-name
+
+```
+5. Open a pull request against the main branch of the original repository.
+
+
+
+
+
