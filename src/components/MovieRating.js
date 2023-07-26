@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const MovieRating = ({ voteAverage, movieId, onChangeRating }) => {
   const [rating, setRating] = useState(0);
@@ -31,7 +31,7 @@ const MovieRating = ({ voteAverage, movieId, onChangeRating }) => {
           key={i}
           className="star"
           onClick={() => handleRatingChange(i)}
-          style={{ cursor: 'pointer', color: "yellow" }}
+          style={{ cursor: "pointer", color: "gold" }}
         >
           &#9733;
         </span>
@@ -42,11 +42,11 @@ const MovieRating = ({ voteAverage, movieId, onChangeRating }) => {
           key={i}
           className="star"
           onClick={() => handleRatingChange(i)}
-          style={{ cursor: 'pointer'}}
+          style={{ cursor: "pointer" }}
         >
           &#9733;
         </span>
-      ); // Empty star
+      ); // Filled star with no style
     }
   }
 
