@@ -63,7 +63,7 @@ const MovieSearch = ({ watchlist, onWatchlistChange, onSearch, fetchErr }) => {
     if (!searchTerm) {
       onSearch("a"); //2023/ latest movies that begin with "a"
       setHeader("Latest movies right now");
-    }
+    } // eslint-disable-next-line
   }, [searchTerm]);
 
   const addToWatchlist = (movieData) => {
